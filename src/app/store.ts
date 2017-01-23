@@ -1,14 +1,16 @@
 import { tassign } from 'tassign'; 
-import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, CLEAR_TODOS } from './actions'; 
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, CLEAR_TODOS, INCREMENT, DECREMENT } from './actions'; 
 
 export interface IAppState {
   todos: any[];
   lastUpdate: Date; 
+  newMessages: number;
 }
 
 export const INITIAL_STATE: IAppState = { 
   todos: [],
-  lastUpdate: null
+  lastUpdate: null,
+  newMessages: 0
 }
 
 function addTodo(state, action) {
@@ -50,12 +52,22 @@ function clearTodos(state, action) {
   });
 }
 
+function increment(state, action) {
+  return tassign(state, { newMessages: state.newMessages + 1 });
+}
+
+function decrement(state, action) {
+  return tassign(state, { newMessages: state.newMessages - 1 });
+}
+
 export function rootReducer(state: IAppState, action): IAppState {
   switch (action.type) {
     case ADD_TODO: return addTodo(state, action);
     case TOGGLE_TODO: return toggleTodo(state, action);
     case REMOVE_TODO: return removeTodo(state, action);
     case CLEAR_TODOS: return clearTodos(state, action);
+    case INCREMENT: return increment(state, action);
+    case DECREMENT: return decrement(state, action);
   }
 
   return state; 
