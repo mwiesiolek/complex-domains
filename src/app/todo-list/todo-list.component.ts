@@ -9,18 +9,10 @@ import { TodoService } from './todo.service';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css']
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent {
   @select() todos; 
   
-  constructor(
-    private ngRedux: NgRedux<IAppState>,
-    private service: TodoService) {
-  }
-
-  ngOnInit() {
-    this.service.getTodos().subscribe(todos => {
-      console.log(todos.json());
-    })
+  constructor(private ngRedux: NgRedux<IAppState>) {
   }
 
   addTodo(input) {
