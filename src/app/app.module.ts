@@ -7,7 +7,7 @@ import { NgRedux, NgReduxModule, DevToolsExtension } from 'ng2-redux';
 import { AppComponent } from './app.component';
 import { IAppState, rootReducer, INITIAL_STATE } from './store';
 
-import { TodosModule } from './todos/todos.module';
+import { TodosModule } from './tasking/todos.module';
 import { MessagingModule } from './messaging/messaging.module';
 
 @NgModule({
