@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgRedux, select } from 'ng2-redux'; 
 import { IAppState } from '../../store'; 
-import { INCREMENT, DECREMENT } from '../../actions'; 
+import { INCREMENT, DECREMENT } from '../actions'; 
 
 @Component({
   selector: 'app-messages',
@@ -9,7 +9,7 @@ import { INCREMENT, DECREMENT } from '../../actions';
   styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent  {
-  @select() newMessages; 
+  @select(s => s.messaging.newMessages) newMessages; 
 
   constructor(private ngRedux: NgRedux<IAppState>) {
   }
